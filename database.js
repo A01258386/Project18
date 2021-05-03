@@ -1,3 +1,5 @@
+// Placeholder using javascript
+
 let database = {
     foo1:[],
     foo2:[]
