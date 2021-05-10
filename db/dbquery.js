@@ -1,35 +1,43 @@
-const sqlite3 = require('sqlite3').verbose();
+const DB_PATH = './db/project_18.db';
+const db = require('better-sqlite3')(DB_PATH);
 
-function getData(keyword) {
-    // open the database
-    let db = new sqlite3.Database('./db/project_18.db');
+let get_list = (table) => {
+    //get all the data from table
+    let stmt;
+    try {
+        stmt = db.prepare(`SELECT * from ${table}`).all();
+    } catch (err) {
+        console.error(err.message);
+        process.exit(1);
+    }
 
-    let sql = `SELECT * FROM Item`;
-    let items = db.each(sql, [], (err, rows) => {
-        if (err) {
-            return null;
-        }
-        // rows.forEach((row) => {
-        //     console.log(
-        //         row.ItemID,
-        //         row.ItemName,
-        //         row.Recyclable,
-        //         row.DepositValue,
-        //         row.CategoryID,
-        //         row.LocationID
-        //     );
-        // });
-        // console.log(rows[1]);
-        return rows;
-    });
-    // close the database connection
-    db.close();
+    return stmt;
 }
 
-module.exports = getData;
-module.exports = {
-    ItemID: '1',
-    ItemName: 'milk jug',
-    Recyclable: 'yes',
-    DepositValue: '10 cent'
-};
+let compare_keyword = (table, keyword) => {
+    //compare the keyword with the data in table and return
+    let stmt;
+    try {
+        stmt = db.prepare(`SELECT * FROM ${table} WHERE ItemName LIKE \'%${keyword}%\'`).all();
+    } catch (err) {
+        console.error(err.message);
+        process.exit(1);
+    }
+
+    if (stmt.length !== 0) {
+        for (let item of stmt) {
+            console.log(`ID: ${item.ItemID} | Item Name: ${item.ItemName}`);
+        }
+    } else {
+        console.log('No item found');
+    }
+
+    return stmt;
+}
+
+//// testing the function - print out the results
+// console.log(get_list('Item'));
+// compare_keyword('Item', 'milk carton');
+
+//// export the data so that other file can use
+module.exports = get_list('Item');
