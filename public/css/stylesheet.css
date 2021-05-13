@@ -74,6 +74,14 @@ h2 {
     border: 1px solid red;
 }
 
+.items{
+    list-style-type: none;
+    text-align: center;
+    color: wheat;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+}
+
 section {
     display: flex;
     align-items: center;

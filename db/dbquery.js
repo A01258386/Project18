@@ -1,5 +1,6 @@
 const DB_PATH = './db/project_18.db';
 const db = require('better-sqlite3')(DB_PATH);
+// const keyword = require('../controller/recycle_controller.js');
 
 let get_list = (table) => {
     //get all the data from table
@@ -14,10 +15,17 @@ let get_list = (table) => {
     return stmt;
 }
 
+let check_keyword = (key) => {
+    let alphanumeric = /[\t\r\n]|(--[^\r\n]*)|(\/\*[\w\W]*?(?=\*)\*\/)/gi;
+    if (key.match(alphanumeric)){
+        return true;
+    }
+    else return false;
+}
+
 let compare_keyword = (table, keyword) => {
     //compare the keyword with the data in table and return
     let stmt;
-    let db = require('better-sqlite3')(DB_PATH);
     try {
         stmt = db.prepare(`SELECT * FROM ${table} WHERE ItemName LIKE \'%${keyword}%\'`).all();
     } catch (err) {
@@ -79,7 +87,8 @@ module.exports = {
     get_list: get_list,
     // keyword: router,
     compare_keyword: compare_keyword,
+    check_keyword: check_keyword,
 };
 
 // closed the connection
-db.close();
+// db.close();

@@ -1,8 +1,6 @@
 // This is the app file, It will hold the basic code
 // that makes the webpages from the links.
-
 const express = require("express");
-
 const app = express();
 const path = require("path");
 const ejsLayouts = require("express-ejs-layouts");
@@ -24,8 +22,3 @@ app.listen(3002, function () {
         "Server running. Visit: localhost:3002"
     )
 })
-
-app.use(express.json());
-module.exports = app.post('/results', function (req, res){
-    console.log(req.body.textarea);
-});
