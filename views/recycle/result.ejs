@@ -28,8 +28,12 @@
         <main>
             <h1>RECYCLE<br>BC</h1>
             <p class="main-text"> List of items that recyclable with the keyword '<%= keyword %>'</p>
-            <ul>
-                <li><%= item[0]["ItemName"] %></li>
+            <ul class="items">
+                <% for ( let item of items ) { %>
+                    <li class="item">
+                      <span><%= item.ItemName %>
+                    </li>
+                  <% } %>
             </ul>
         </main>
         <!-- main ends -->

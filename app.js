@@ -24,3 +24,8 @@ app.listen(3002, function () {
         "Server running. Visit: localhost:3002"
     )
 })
+
+app.use(express.json());
+module.exports = app.post('/results', function (req, res){
+    console.log(req.body.textarea);
+});

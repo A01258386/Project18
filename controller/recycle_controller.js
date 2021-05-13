@@ -1,5 +1,5 @@
-const database = require('../db/dbquery.js');
-const keyword = require('../index.js');
+const database = require('../db/dbquery');
+const keyword = require('../app');
 
 let recycleController = {
     search: (req,res) => {
@@ -9,9 +9,9 @@ let recycleController = {
         res.render("recycle/index")
     },
     results: (req, res) => {
-        let item = database.compare_keyword("Item", 'milk');
+        let items = database.compare_keyword("Item", 'can');
         console.log(keyword);
-        res.render("recycle/result", { item, keyword });
+        res.render("recycle/result", { items, keyword });
     }
 }
 
