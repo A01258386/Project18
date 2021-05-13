@@ -17,6 +17,7 @@ let get_list = (table) => {
 let compare_keyword = (table, keyword) => {
     //compare the keyword with the data in table and return
     let stmt;
+    let db = require('better-sqlite3')(DB_PATH);
     try {
         stmt = db.prepare(`SELECT * FROM ${table} WHERE ItemName LIKE \'%${keyword}%\'`).all();
     } catch (err) {
@@ -25,14 +26,10 @@ let compare_keyword = (table, keyword) => {
     }
 
     if (stmt.length !== 0) {
-        for (let item of stmt) {
-            console.log(`ID: ${item.ItemID} | Item Name: ${item.ItemName}`);
-        }
+        return stmt;
     } else {
-        console.log('No item found');
+        return null;
     }
-
-    return stmt;
 }
 
 let add_to_table = (table, data) => {
@@ -71,14 +68,18 @@ let remove_data = (table, keyword) => {
 
 //// testing the function - print out the results
 // console.log(get_list('Item'));
-// compare_keyword('Item', 'milk carton');
+// compare_keyword('Item', 'milk');
 // let data = ['sink', 'yes', '15 cent', 1, 2];
 // add_to_table('Item', data);
 // remove_data('Item', 'sink');
 // console.log(get_list('Item'));
 
 //// export the data so that other file can use
-module.exports = get_list('Item');
+module.exports = {
+    get_list: get_list,
+    // keyword: router,
+    compare_keyword: compare_keyword,
+};
 
 // closed the connection
 db.close();

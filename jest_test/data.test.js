@@ -1,8 +1,6 @@
 //get data database
-const item = require('../db/dbquery.js');
+const item = require('../db/dbquery.js').get_list;
 // const keyword = 'asd';
-
-// console.log(item);
 
 // test keyword 'milk carton'
 test('getting result with keyword \'milk carton\'', () => {
