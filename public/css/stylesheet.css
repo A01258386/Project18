@@ -88,6 +88,14 @@ h2 {
     color: rgb(0, 238, 255);
 }
 
+.dropdown{
+    list-style-type: none;
+}
+
+.noshow{
+    display: none;
+}
+
 section {
     display: flex;
     align-items: center;

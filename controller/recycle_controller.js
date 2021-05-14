@@ -5,7 +5,10 @@ let recycleController = {
         res.render("recycle/index")
     },
     index: (req, res) => {
-        res.render("recycle/index")
+        let items = database.get_list('Item');
+        let keyword = req.body.textarea;
+        
+        res.render("recycle/index", {items});
     },
     results: (req, res) => {
         let keyword = req.body.textarea;
