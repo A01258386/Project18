@@ -29,10 +29,19 @@
             <h1>RECYCLE<br>BC</h1>
             <p class="main-text"> List of items that recyclable with the keyword '<%= keyword %>'</p>
             <ul class="items">
+                <li class="title">
+                    <span class="title">Item Name</span>
+                </li>
+                <li class="title">
+                    <span class="title">Deposit Value</span>
+                </li>
                 <% if (items !== null){ %>
                 <% for ( let item of items ) { %>
                     <li class="item">
-                      <span><%= item.ItemName %>
+                        <span><%= item.ItemName %></span>
+                    </li>
+                    <li class="item">
+                        <span><%= item.DepositValue %></span>
                     </li>
                   <% } %>
                 <% } else { %>
