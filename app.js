@@ -16,9 +16,10 @@ app.set("view engine", "ejs");
 app.post("/results", recycleController.results)
 app.get("/", recycleController.index)
 
-
-app.listen(3002, function () {
+let port = process.env.PORT || 3002;
+app.listen(port, function () {
     console.log(
         "Server running. Visit: localhost:3002"
     )
 })
+
