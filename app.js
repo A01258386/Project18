@@ -22,3 +22,5 @@ app.listen(3002, function () {
         "Server running. Visit: localhost:3002"
     )
 })
+
+module.exports = app;
