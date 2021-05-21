@@ -12,9 +12,10 @@ app.use(ejsLayouts);
 
 app.set("view engine", "ejs");
 
-// app.get("/recycle",recycleController.search)
-app.post("/results", recycleController.results)
 app.get("/", recycleController.index)
+app.post("/results", recycleController.results)
+app.get("/adding", recycleController.adding)
+app.post("/confirm", recycleController.confirm)
 
 let port = process.env.PORT || 3002;
 app.listen(port, function () {

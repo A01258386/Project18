@@ -88,6 +88,8 @@ module.exports = {
     // keyword: router,
     compare_keyword: compare_keyword,
     check_keyword: check_keyword,
+    insert_item: add_to_table,
+    
 };
 
 // closed the connection
