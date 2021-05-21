@@ -27,7 +27,7 @@ let compare_keyword = (table, keyword) => {
     //compare the keyword with the data in table and return
     let stmt;
     try {
-        stmt = db.prepare(`SELECT * FROM ${table} WHERE ItemName LIKE \'%${keyword}%\'`).all();
+        stmt = db.prepare(`SELECT * FROM ${table} INNER JOIN Location ON Item.LocationID = Location.LocationID WHERE ItemName LIKE \'%${keyword}%\'`).all();
     } catch (err) {
         console.error(err.message);
         process.exit(1);

@@ -83,7 +83,7 @@ h2 {
     border-top: 1px solid;
     border-bottom: 1px solid;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     background-color: rgba(200,200,200,0.8);
     text-shadow: -1px 0 darkslategray, 0 1px darkslategray, 1px 0 darkslategray, 0 -1px darkslategray;
 
