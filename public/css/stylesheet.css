@@ -162,16 +162,16 @@ footer {
     }
 
     main {
-        padding-top: 3em;
-        padding-bottom: 3em;
+        padding-top: 5em;
+        padding-bottom: 5em;
     }
 
     h1 {
-        font-size: 2em;
+        font-size: 2.5em;
     }
 
     .main-text {
-        font-size: 0.9em;
+        font-size: 1em;
         padding-left: 3em;
         padding-right: 3em;
     }
