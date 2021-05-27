@@ -2,7 +2,7 @@ const { restart } = require('nodemon');
 const database = require('../db/dbquery');
 
 let recycleController = {
-    search: (req,res) => {
+    search: (req, res) => {
         res.render("recycle/index")
     },
     index: (req, res) => {
