@@ -1,5 +1,6 @@
 const DB_PATH = './db/project_18.db';
 const db = require('better-sqlite3')(DB_PATH);
+// const keyword = require('../controller/recycle_controller.js');
 
 let get_list = (table) => {
     //get all the data from table
@@ -14,25 +15,29 @@ let get_list = (table) => {
     return stmt;
 }
 
+let check_keyword = (key) => {
+    let alphanumeric = /[\t\r\n]|(--[^\r\n]*)|(\/\*[\w\W]*?(?=\*)\*\/)/gi;
+    if (key.match(alphanumeric)){
+        return true;
+    }
+    else return false;
+}
+
 let compare_keyword = (table, keyword) => {
     //compare the keyword with the data in table and return
     let stmt;
     try {
-        stmt = db.prepare(`SELECT * FROM ${table} WHERE ItemName LIKE \'%${keyword}%\'`).all();
+        stmt = db.prepare(`SELECT * FROM ${table} INNER JOIN Location ON Item.LocationID = Location.LocationID WHERE ItemName LIKE \'%${keyword}%\'`).all();
     } catch (err) {
         console.error(err.message);
         process.exit(1);
     }
 
     if (stmt.length !== 0) {
-        for (let item of stmt) {
-            console.log(`ID: ${item.ItemID} | Item Name: ${item.ItemName}`);
-        }
+        return stmt;
     } else {
-        console.log('No item found');
+        return null;
     }
-
-    return stmt;
 }
 
 let add_to_table = (table, data) => {
@@ -71,14 +76,21 @@ let remove_data = (table, keyword) => {
 
 //// testing the function - print out the results
 // console.log(get_list('Item'));
-// compare_keyword('Item', 'milk carton');
+// compare_keyword('Item', 'milk');
 // let data = ['sink', 'yes', '15 cent', 1, 2];
 // add_to_table('Item', data);
 // remove_data('Item', 'sink');
 // console.log(get_list('Item'));
 
 //// export the data so that other file can use
-module.exports = get_list('Item');
+module.exports = {
+    get_list: get_list,
+    // keyword: router,
+    compare_keyword: compare_keyword,
+    check_keyword: check_keyword,
+    insert_item: add_to_table,
+    
+};
 
 // closed the connection
-db.close();
+// db.close();

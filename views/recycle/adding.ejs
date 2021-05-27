@@ -27,20 +27,20 @@
         <!-- main starts -->
         <main>
             <h1>RECYCLE<br>BC</h1>
-            <p class="main-text">Search your containers to recycle in your location</p>
-            <form method="POST" action="/results" class="textbox-button">
-                <input type="text" autocomplete="off" name="textarea" id="textarea" class="textarea" placeholder="Enter item" rows="1" oninput="filterFunction()">
-                <button type="submit" name="btn_search" class="btn_search">Search</button>
-                <div class="dropdown">
-                    <ul class="dropdown" id="liveResults" aria-labelledby="liveResults">
-                        <% for (const item of items) { %>
-                            <li class="item noshow">
-                                <span><%= item.ItemName %></span>
-                            </li>
-                        <% } %>
-                    </ul>
-                </div>
-            </form>
+            <p class="main-text">Adding item into database</p>
+            <form method="POST" action="/confirm">
+                <label for="itemName">Item Name:</label><br>
+                <input type="text" id="itemName" name="itemName" placeholder=""><br>
+                <label for="recyclable">Recyclable:</label><br>
+                <input type="text" id="recyclable" name="recyclable" placeholder=""><br>
+                <label for="depositValue">Deposit Value:</label><br>
+                <input type="text" id="depositValue" name="depositValue" placeholder=""><br>
+                <label for="categoryID">Category ID:</label><br>
+                <input type="text" id="categoryID" name="categoryID" placeholder=""><br>
+                <label for="locationID">Location ID:</label><br>
+                <input type="text" id="locationID" name="locationID" placeholder=""><br>
+                <input type="submit" value="Submit">
+            </form> 
         </main>
         <!-- main ends -->
 

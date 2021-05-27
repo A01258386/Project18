@@ -1,0 +1,110 @@
+body {
+    font-family: 'Open Sans',sans-serif;
+    color: #111111;
+    background-color: #ffffff;
+    width: 100vw;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 20%;
+}
+
+main {
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(../images/recycle.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;  
+    padding-top: 10em;
+    padding-bottom: 6em;
+}
+
+h1 {
+    font-family: 'Roboto',sans-serif;
+    color: white;
+    text-align: center;
+    font-size: 4.5em;
+}
+
+h2 {
+    font-family: 'Roboto',sans-serif;
+    text-align: center;
+}
+
+.main-text {
+    color: white;
+    text-align: center;
+}
+
+.result-box-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+textarea {
+    resize: none;
+    font-family: 'Open Sans',sans-serif;
+    border: 2px solid rgb(91, 91, 91);
+}
+
+.result-box {
+    text-align: center;
+}
+
+button {
+    border: 1.8px solid rgb(91, 91, 91);
+    margin: 5px;
+    padding: 3.5px;
+    border-radius: 3px;
+    background-color: #478ac9;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 1em;
+}
+
+button:hover {
+    background-color: rgb(0, 110, 255);
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5em;
+}
+
+.section-image {
+    height: 100px;
+    width: 250px;
+    background-image: url(../images/mountains.jpeg);
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    padding: 5em;
+}
+
+.section-container {
+    padding-left: 3em;
+}
+
+.section-text {
+    text-align: center;
+}
+
+footer {
+    color: white;
+    background-color:rgb(51, 51, 51);
+    min-height: 8em;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
